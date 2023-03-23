@@ -1,1 +1,1 @@
-
+OpenCV is a popular computer vision library that provides a wide range of functionalities for image and video processing. It includes functions for reading, writing, and playing videos, and also provides tools for converting video formats.
