@@ -18,4 +18,5 @@ For testing PnP (Perspective-n-Point) and AR (Augmented Reality) using the chess
 
 3. Run the modified code to visualize the augmented reality result, where the added object appears to be placed on top of the chessboard.
 
-
+Here is the screenshot of output:
+<img width="1440" alt="Screenshot 2023-05-15 at 11 44 04 PM" src="https://github.com/neostar08/Python/assets/119280926/b0c69441-3d6d-4d1a-bc97-ed4976bf2635">
