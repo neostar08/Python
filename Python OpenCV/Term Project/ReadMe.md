@@ -1,4 +1,4 @@
-Image Filtering App
+# Image Filtering App
 
 <p align="center">
   <img src="example/app_screenshot.png" alt="Image Filtering App" width="500">
