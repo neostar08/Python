@@ -67,3 +67,19 @@ def load_image():
     original_label.image = original_photo
     
     # Create a button to load the image
+    load_button = tk.Button(app, text="Load Image", command=load_image)
+load_button.pack()
+
+# Create a dropdown menu to select the filter
+filter_var = tk.StringVar(app)
+filter_var.set("Grayscale")  # Set default filter
+
+filter_dropdown = tk.OptionMenu(app, filter_var, "Grayscale", "Blur", "Edge Detection", "Sepia", "Invert Colors",
+                                "Sharpen", "Emboss", "Brightness", "Contrast")
+filter_dropdown.pack()
+
+# Create a button to apply the filter
+filter_button = tk.Button(app, text="Apply Filter", command=apply_filter)
+filter_button.pack()
+
+# Create labels to display the original and filtered images
