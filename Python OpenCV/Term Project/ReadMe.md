@@ -1,4 +1,4 @@
-Image Filtering App
+# Image Filtering App
 
 A simple application for applying various filters to images.
 
