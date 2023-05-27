@@ -102,8 +102,36 @@ NumPy: https://numpy.org/
 
 ## Repository Information
 
+The provided code is a Python script for an "Image Filtering App" that allows users to load images, apply various filters, and save the filtered images. The code utilizes the following libraries:
 
-This repository contains the source code and additional resources for the Image Filtering App project. The project is developed using Python, PyQt5, OpenCV, and NumPy.
+
+### PyQt5: 
+
+
+PyQt5 is a Python binding for the Qt framework. It provides a set of Python modules that enable developers to create desktop applications with a graphical user interface. In this code, PyQt5 is used to create the GUI components, such as labels, buttons, and combo boxes, and handle user interactions.
+
+### OpenCV:
+
+OpenCV (Open Source Computer Vision Library) is a popular open-source library for computer vision and image processing tasks. It provides a wide range of functions and algorithms for image manipulation, including loading, filtering, and saving images. In this code, OpenCV is used for image loading, applying filters, and image conversion.
+
+
+
+The code follows a simple structure, creating a main application window and setting up the GUI components. Users can load an image, select a filter from the combo box, apply the chosen filter, and save the resulting filtered image.
+
+
+
+To run the code, you need to have Python installed on your system, along with the required libraries (PyQt5 and OpenCV). You can execute the script using a Python 
+interpreter or an integrated development environment (IDE) that supports Python.
+
+
+
+When using this code for your project, it is recommended to provide the necessary installation instructions for the required libraries in your project's README.md file. Additionally, you should include a description of the functionality of your project, the purpose of the Image Filtering App, and any specific instructions or considerations for users who will be interacting with your application. 
+
+The Image Filtering App is a Python script that utilizes OpenAI's ChatGPT language model to enhance the functionality of image filtering.  By leveraging the power of ChatGPT, the app provides precise image processing capabilities and generates visually appealing results.
+
+
+
+Remember to acknowledge and provide proper attribution to the PyQt5 and OpenCV libraries in your project, as per their respective licenses and guidelines.
 
 ## Repository Structure
 
