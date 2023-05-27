@@ -83,3 +83,10 @@ filter_button = tk.Button(app, text="Apply Filter", command=apply_filter)
 filter_button.pack()
 
 # Create labels to display the original and filtered images
+original_label = tk.Label(app)
+original_label.pack()
+filtered_label = tk.Label(app)
+filtered_label.pack()
+
+# Start the Tkinter event loop
+app.mainloop()
