@@ -1,11 +1,18 @@
-# Image Filtering App
+Image Filtering App
 
-A simple application for applying various filters to images.
+<p align="center">
+  <img src="example/app_screenshot.png" alt="Image Filtering App" width="500">
+</p>
+A simple image filtering application built using Python and OpenCV.
 
-## Installation
+Table of Contents
 
-1.Clone the repository to your local machine.
-
-2.Ensure you have Python and the necessary libraries (OpenCV, tkinter, PIL, numpy) installed.
-
-3.Run the image_filtering_app.py file to launch the application.
+Installation
+Usage
+Available Filters
+Examples
+File Structure
+Contributing
+Credits
+License
+Installation
