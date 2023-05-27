@@ -52,3 +52,18 @@ def apply_filter():
 
 
 # Function to load the image and initialize the app
+def load_image():
+    global original_image
+
+    # Load the image using OpenCV
+    image_path = filedialog.askopenfilename()
+    original_image = cv2.imread(image_path)
+
+    # Display the original image
+    original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
+    original_image = Image.fromarray(original_image)
+    original_photo = ImageTk.PhotoImage(original_image)
+    original_label.configure(image=original_photo)
+    original_label.image = original_photo
+    
+    # Create a button to load the image
