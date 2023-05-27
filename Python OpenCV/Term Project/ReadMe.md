@@ -2,7 +2,7 @@
 
 A simple application for applying various filters to images.
 
-Installation
+## Installation
 
 1.Clone the repository to your local machine.
 
