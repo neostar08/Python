@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Generator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/background.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 15px;
+        }
+        .btn-custom {
+            background: linear-gradient(90deg, #FF69B4, #FF1493);
+            color: white;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(90deg, #FF1493, #FF69B4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4">Cute AI Story Generator</h1>
+            <p class="lead">Upload an image, and let AI create a magical story for you!</p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" class="mt-4">
+            <div class="mb-3">
+                <label for="file" class="form-label">Upload Image</label>
+                <input type="file" name="file" class="form-control" id="file" required>
+            </div>
+            <div class="mb-3">
+                <label for="language" class="form-label">Select Language</label>
+                <select name="language" id="language" class="form-select">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="zh-cn">Chinese</option>
+                    <option value="ko">Korean</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Generate Story</button>
+        </form>
+
+        {% if story %}
+        <div class="card mt-4 p-3">
+            <h5>Generated Story:</h5>
+            <p>{{ story }}</p>
+        </div>
+        {% endif %}
+
+        {% if translated_story %}
+        <div class="card mt-4 p-3">
+            <h5>Translated Story:</h5>
+            <p>{{ translated_story }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
