@@ -1,23 +1,22 @@
-import streamlit as st
+from flask import Flask, render_template, request
 import torch
 from PIL import Image
 import openai
-from googletrans import Translator
 import cv2
 import numpy as np
+from googletrans import Translator
+
+app = Flask(__name__)
+translator = Translator()
 
 # Configure OpenAI API
 openai.api_key = "your_openai_api_key"
 
 # Load YOLOv5 model
-@st.cache_resource
 def load_model():
     return torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 
 model = load_model()
-
-# Google Translator
-translator = Translator()
 
 # Function to detect objects
 def detect_objects(image):
@@ -40,60 +39,31 @@ def generate_story(detections):
 def translate_text(text, target_language):
     translated = translator.translate(text, dest=target_language)
     return translated.text
-# Streamlit App with Enhanced Design
-st.set_page_config(page_title="AI Story Generator", layout="wide")
 
-# Add Enhanced Background
-st.markdown(
-    """
-    <style>
-        body {
-            background-image: url('https://your-uploaded-image-url.com/updated_ai_background.jpg'); /* Update with your image URL */
-            background-size: cover;
-            background-attachment: fixed;
-            color: #FFFFFF;
-            font-family: 'Roboto', sans-serif;
-        }
-        .main-title {
-            font-size: 48px;
-            font-weight: bold;
-            text-align: center;
-            color: #00FFDD;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0, 255, 221, 0.7);
-        }
-        .sub-title {
-            font-size: 24px;
-            text-align: center;
-            color: #FFD700;
-            margin-bottom: 40px;
-            text-shadow: 1px 1px 6px rgba(255, 215, 0, 0.7);
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 255, 221, 0.4);
-            margin-bottom: 20px;
-        }
-        .button {
-            background: linear-gradient(90deg, #00FFDD, #007BFF);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.7);
-        }
-        .button:hover {
-            background: linear-gradient(90deg, #007BFF, #00FFDD);
-            box-shadow: 0px 4px 15px rgba(0, 255, 221, 0.7);
-        }
-        .sidebar {
-            color: #FFFFFF;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+@app.route("/", methods=["GET", "POST"])
+def home():
+    story = None
+    translated_story = None
+    detections = None
+    if request.method == "POST":
+        # Get uploaded file
+        file = request.files["file"]
+        if file:
+            image = Image.open(file.stream)
+            image_array = np.array(image)
+
+            # Detect objects
+            detections = detect_objects(image_array)
+
+            # Generate a story
+            if not detections.empty:
+                story = generate_story(detections)
+
+                # Translate the story
+                target_language = request.form.get("language")
+                translated_story = translate_text(story, target_language)
+
+    return render_template("index.html", story=story, translated_story=translated_story, detections=detections)
+
+if __name__ == "__main__":
+    app.run(debug=True)
