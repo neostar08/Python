@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Generator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ AI Story Generator ✨</h1>
+            <p>Unleash your creativity with AI-powered stories</p>
+        </header>
+
+        <main>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <label for="file">Upload an Image:</label>
+                <input type="file" name="file" id="file" accept="image/*" required>
+
+                <label for="language">Translate to (e.g., en, fr, es):</label>
+                <input type="text" name="language" id="language" placeholder="Enter language code (default: en)">
+
+                <button class="animated-button" type="submit">Generate Story</button>
+            </form>
+
+            {% if story %}
+            <section class="story-output">
+                <h2>Generated Story:</h2>
+                <p>{{ story }}</p>
+
+                {% if translated_story %}
+                <h2>Translated Story:</h2>
+                <p>{{ translated_story }}</p>
+                {% endif %}
+            </section>
+            {% endif %}
+
+            {% if detections %}
+            <section class="detections-output">
+                <h2>Detected Objects:</h2>
+                <ul>
+                    {% for obj in detections %}
+                    <li>{{ obj }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>&copy; 2024 AI Story Generator. Powered by YOLOv5 and Hugging Face.</p>
+        </footer>
+    </div>
+</body>
+</html>
